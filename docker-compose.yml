@@ -1,0 +1,18 @@
+services:
+  mysql:
+    build:
+      context: ./docker/mysql
+      network: host
+    container_name: sitesimple-mysql
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      MYSQL_DATABASE: sitesimple
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
